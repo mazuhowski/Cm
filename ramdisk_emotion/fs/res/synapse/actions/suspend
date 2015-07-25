@@ -1,17 +1,19 @@
+BB=/sbin/busybox;
+
 case $1 in
 powersuspend)
-  P=/sys/kernel/power_suspend/power_suspend_mode
+  P=/sys/kernel/power_suspend/power_suspend_mode;
   if [ ! -z $2 ]; then
   if [ $2 == Userspace_trigger ]; then
-    echo 1 > $P
-  elif [ $2 == DisplayPanel_hook ]; then
-    echo 2 > $P
-  fi; fi
-  copy=`cat $P`
+   $BB echo 1 > $P;
+  else
+   $BB echo 2 > $P;
+  fi;
+  copy=`$BB cat $P`;
   if [ $copy == 1 ]; then
-    echo Userspace_trigger
-  elif [ $copy == 2 ]; then
-    echo DisplayPanel_hook
-  fi
+   $BB echo Userspace_trigger;
+  else
+   $BB echo DisplayPanel_hook;
+  fi;
   ;;
 esac

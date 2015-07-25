@@ -75,9 +75,12 @@ cat << CTAG
 		description:" "
 	}},
 	{ SOptionList:{
-		default:`echo $(/res/synapse/actions/suspend powersuspend)`,
-		action:"suspend powersuspend",
-		values:[Userspace_trigger, DisplayPanel_hook,]
+		default:`cat /sys/kernel/power_suspend/power_suspend_mode`,
+		action:"generic /sys/kernel/power_suspend/power_suspend_mode",
+		values:{
+				"1":"Userspace_trigger",
+				"2":"DisplayPanel_hook",
+			}
 	}},
 	{ SDescription:{
 		description:" "
