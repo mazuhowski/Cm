@@ -1,33 +1,18 @@
-From 3491804243ab6241142bbcf57d600b44e65a71e0 Mon Sep 17 00:00:00 2001
+From 8d88e981941633d2eac10e46b2c1b8230a050fe2 Mon Sep 17 00:00:00 2001
 From: placiano <placiano80@gmail.com>
-Date: Sat, 23 May 2015 16:59:45 +0200
-Subject: [PATCH] patch init.rc
+Date: Sat, 25 Jul 2015 08:55:25 +0200
+Subject: [PATCH] SM-910F-CM: Patch init.rc
 
 ---
- init.rc | 10 ++++++++--
- 1 file changed, 8 insertions(+), 2 deletions(-)
+ SM-N910F_CM/init.rc | 6 ++++++
+ 1 file changed, 6 insertions(+), 0 deletions(-)
 
-diff --git a/init.rc b/init.rc
-index c449630..8ca7abd 100755
---- a/init.rc
-+++ b/init.rc
-@@ -10,12 +10,12 @@ import /init.${ro.hardware}.rc
- import /init.${ro.zygote}.rc
- import /init.trace.rc
- import /init.carrier.rc
--import /init.container.rc
-+#import /init.container.rc
- import /init.rilcarrier.rc
- 
- on early-init
-     # Set init and its forked children's oom_adj.
--    write /proc/1/oom_adj -16
-+    write /proc/1/oom_score_adj -1000
- 
-     # Apply strict SELinux checking of PROT_EXEC on mmap/mprotect calls.
-     write /sys/fs/selinux/checkreqprot 0
-@@ -1645,3 +1645,9 @@ service sysprof /system/bin/sysprof -f /data/local/tmp/.sysprofctrl -o /data/loc
-     group root
+diff --git a/SM-N910F_CM/init.rc b/SM-N910F_CM/init.rc
+index 029d7de..8e77a8e 100755
+--- a/SM-N910F_CM/init.rc
++++ b/SM-N910F_CM/init.rc
+@@ -650,3 +650,9 @@ service pre-recovery /system/bin/uncrypt
+     class main
      disabled
      oneshot
 +
