@@ -10,7 +10,7 @@ mount -o remount,rw -t auto /system
 mount -t rootfs -o remount,rw rootfs
 
 
-ZSWAPSIZE=1536
+ZSWAPSIZE=1424
 
 
 
