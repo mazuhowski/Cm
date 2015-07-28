@@ -510,12 +510,7 @@ static void *persistent_ram_iomap(phys_addr_t start, size_t size)
 		return NULL;
 	}
 
-	if (memtype)
-		va = ioremap(start, size);
-	else
-		va = ioremap_wc(start, size);
-
-	return va;
+	return ioremap(start, size);
 }
 
 static int persistent_ram_buffer_map(phys_addr_t start, phys_addr_t size,
