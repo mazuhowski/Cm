@@ -1,16 +1,31 @@
-From 198125bb52d7c481c7d62420e66738ee20ad115d Mon Sep 17 00:00:00 2001
+From 0004df584b76ad0300cdee37b43bc87c567f7887 Mon Sep 17 00:00:00 2001
 From: placiano <placiano80@gmail.com>
-Date: Sat, 25 Jul 2015 12:45:20 +0200
-Subject: [PATCH] SM-N910F-CM: Patch change scheduler to cfq
+Date: Thu, 30 Jul 2015 02:32:50 +0200
+Subject: [PATCH] SM-N910F_CM: Patch init.qcom.rc
 
 ---
- SM-N910F_CM/init.qcom.rc | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ SM-N910F_CM/init.qcom.rc | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/SM-N910F_CM/init.qcom.rc b/SM-N910F_CM/init.qcom.rc
-index 9c1f30b..9f569d9 100755
+index 9c1f30b..cd8a16a 100755
 --- a/SM-N910F_CM/init.qcom.rc
 +++ b/SM-N910F_CM/init.qcom.rc
+@@ -1260,10 +1260,10 @@ service mpdecision /system/bin/mpdecision --avg_comp
+     group system
+     disabled
+ 
+-#service thermal-engine /system/bin/thermal-engine
+-#    class main
+-#    user root
+-#    group radio system
++service thermal-engine /system/bin/thermal-engine
++    class main
++    user root
++    group radio system
+ 
+ service time_daemon /system/bin/time_daemon
+     class late_start
 @@ -1430,7 +1430,7 @@ service wifi-crda /system/bin/sh /system/etc/init.crda.sh
     oneshot
  
@@ -20,6 +35,19 @@ index 9c1f30b..9f569d9 100755
  
      # Configure the hardware properly
      write /sys/module/lpm_levels/enable_low_power/l2 4
+@@ -1464,9 +1464,9 @@ on property:sys.boot_completed=1
+         echo "cpubw_hwmon" > $devfreq_gov
+     done
+ 
+-    write /sys/module/msm_thermal/core_control/enabled 1
+-    write /sys/module/msm_thermal/parameters/enabled "Y"
+-    write /sys/module/msm_thermal/parameters/limit_temp_degC 78
++    # write /sys/module/msm_thermal/core_control/enabled 1
++    # write /sys/module/msm_thermal/parameters/enabled "Y"
++    # write /sys/module/msm_thermal/parameters/limit_temp_degC 78
+ 
+     write /sys/module/cpu_boost/parameters/sync_threshold 1497600
+ 
 --
 libgit2 0.22.2
 
