@@ -1,19 +1,22 @@
-From 0004df584b76ad0300cdee37b43bc87c567f7887 Mon Sep 17 00:00:00 2001
+From 50e21354d4ab835483f747dd043bbe57744810e4 Mon Sep 17 00:00:00 2001
 From: placiano <placiano80@gmail.com>
-Date: Thu, 30 Jul 2015 02:32:50 +0200
+Date: Mon, 3 Aug 2015 15:23:11 +0200
 Subject: [PATCH] SM-N910F_CM: Patch init.qcom.rc
 
 ---
- SM-N910F_CM/init.qcom.rc | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+ SM-N910F_CM/init.qcom.rc | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
 
 diff --git a/SM-N910F_CM/init.qcom.rc b/SM-N910F_CM/init.qcom.rc
-index 9c1f30b..cd8a16a 100755
+index 9c1f30b..f007e79 100755
 --- a/SM-N910F_CM/init.qcom.rc
 +++ b/SM-N910F_CM/init.qcom.rc
-@@ -1260,10 +1260,10 @@ service mpdecision /system/bin/mpdecision --avg_comp
+@@ -1258,12 +1258,12 @@ service mpdecision /system/bin/mpdecision --avg_comp
+     class main
+     user root
      group system
-     disabled
+-    disabled
++#    disabled
  
 -#service thermal-engine /system/bin/thermal-engine
 -#    class main
@@ -48,6 +51,18 @@ index 9c1f30b..cd8a16a 100755
  
      write /sys/module/cpu_boost/parameters/sync_threshold 1497600
  
+@@ -1553,9 +1553,9 @@ on property:sys.boot_completed=1
+ 
+    # Change cpu-boost sysfs permission
+    chown system system /sys/module/cpu_boost/parameters/sync_threshold
+-   chmod 0660 /sys/module/cpu_boost/parameters/sync_threshold
++   chmod 0644 /sys/module/cpu_boost/parameters/sync_threshold
+    chown system system /sys/module/cpu_boost/parameters/boost_ms
+-   chmod 0660 /sys/module/cpu_boost/parameters/boost_ms
++   chmod 0644 /sys/module/cpu_boost/parameters/boost_ms
+ 
+ 
+     # Change bimc-boost sysfs permission
 --
 libgit2 0.22.2
 
