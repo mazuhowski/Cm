@@ -1,0 +1,68 @@
+From 50e21354d4ab835483f747dd043bbe57744810e4 Mon Sep 17 00:00:00 2001
+From: placiano <placiano80@gmail.com>
+Date: Mon, 3 Aug 2015 15:23:11 +0200
+Subject: [PATCH] SM-N910F_CM: Patch init.qcom.rc
+
+---
+ SM-N910F_CM/init.qcom.rc | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/SM-N910F_CM/init.qcom.rc b/SM-N910F_CM/init.qcom.rc
+index 9c1f30b..f007e79 100755
+--- a/SM-N910F_CM/init.qcom.rc
++++ b/SM-N910F_CM/init.qcom.rc
+@@ -1258,12 +1258,12 @@ service mpdecision /system/bin/mpdecision --avg_comp
+     class main
+     user root
+     group system
+-    disabled
++#    disabled
+ 
+-#service thermal-engine /system/bin/thermal-engine
+-#    class main
+-#    user root
+-#    group radio system
++service thermal-engine /system/bin/thermal-engine
++    class main
++    user root
++    group radio system
+ 
+ service time_daemon /system/bin/time_daemon
+     class late_start
+@@ -1430,7 +1430,7 @@ service wifi-crda /system/bin/sh /system/etc/init.crda.sh
+    oneshot
+ 
+ on property:sys.boot_completed=1
+-    write /sys/block/mmcblk0/queue/scheduler fiops
++    write /sys/block/mmcblk0/queue/scheduler cfq
+ 
+     # Configure the hardware properly
+     write /sys/module/lpm_levels/enable_low_power/l2 4
+@@ -1464,9 +1464,9 @@ on property:sys.boot_completed=1
+         echo "cpubw_hwmon" > $devfreq_gov
+     done
+ 
+-    write /sys/module/msm_thermal/core_control/enabled 1
+-    write /sys/module/msm_thermal/parameters/enabled "Y"
+-    write /sys/module/msm_thermal/parameters/limit_temp_degC 78
++    # write /sys/module/msm_thermal/core_control/enabled 1
++    # write /sys/module/msm_thermal/parameters/enabled "Y"
++    # write /sys/module/msm_thermal/parameters/limit_temp_degC 78
+ 
+     write /sys/module/cpu_boost/parameters/sync_threshold 1497600
+ 
+@@ -1553,9 +1553,9 @@ on property:sys.boot_completed=1
+ 
+    # Change cpu-boost sysfs permission
+    chown system system /sys/module/cpu_boost/parameters/sync_threshold
+-   chmod 0660 /sys/module/cpu_boost/parameters/sync_threshold
++   chmod 0644 /sys/module/cpu_boost/parameters/sync_threshold
+    chown system system /sys/module/cpu_boost/parameters/boost_ms
+-   chmod 0660 /sys/module/cpu_boost/parameters/boost_ms
++   chmod 0644 /sys/module/cpu_boost/parameters/boost_ms
+ 
+ 
+     # Change bimc-boost sysfs permission
+--
+libgit2 0.22.2
+

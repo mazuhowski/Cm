@@ -1,0 +1,27 @@
+From 8d88e981941633d2eac10e46b2c1b8230a050fe2 Mon Sep 17 00:00:00 2001
+From: placiano <placiano80@gmail.com>
+Date: Sat, 25 Jul 2015 08:55:25 +0200
+Subject: [PATCH] SM-910F-CM: Patch init.rc
+
+---
+ SM-N910F_CM/init.rc | 6 ++++++
+ 1 file changed, 6 insertions(+), 0 deletions(-)
+
+diff --git a/SM-N910F_CM/init.rc b/SM-N910F_CM/init.rc
+index 029d7de..8e77a8e 100755
+--- a/SM-N910F_CM/init.rc
++++ b/SM-N910F_CM/init.rc
+@@ -650,3 +650,9 @@ service pre-recovery /system/bin/uncrypt
+     class main
+     disabled
+     oneshot
++
++# init Emotion Kernel
++service emotioninit /sbin/emotion.sh
++    class main
++    user root
++    oneshot
+\ No newline at end of file
+--
+libgit2 0.22.2
+

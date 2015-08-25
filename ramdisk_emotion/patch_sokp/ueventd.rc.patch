@@ -1,0 +1,25 @@
+From 31198cd8fff4ff4ce460187926c30c7ce81022cb Mon Sep 17 00:00:00 2001
+From: placiano <placiano80@gmail.com>
+Date: Sat, 25 Jul 2015 08:57:50 +0200
+Subject: [PATCH] SM-N910F-CM: Patch ueventd.rc
+
+---
+ SM-N910F_CM/ueventd.rc | 2 ++
+ 1 file changed, 2 insertions(+), 0 deletions(-)
+
+diff --git a/SM-N910F_CM/ueventd.rc b/SM-N910F_CM/ueventd.rc
+index 4023ea6..cb62955 100644
+--- a/SM-N910F_CM/ueventd.rc
++++ b/SM-N910F_CM/ueventd.rc
+@@ -8,6 +8,8 @@ subsystem adf
+ /dev/tty                  0666   root       root
+ /dev/random               0666   root       root
+ /dev/urandom              0666   root       root
++/dev/frandom              0666   root       root
++/dev/erandom              0666   root       root
+ # Make HW RNG readable by group system to let EntropyMixer read it.
+ /dev/hw_random            0440   root       system
+ /dev/ashmem               0666   root       root
+--
+libgit2 0.22.2
+
